@@ -14,5 +14,13 @@ df.columns = ['label', 'text']
 df = df[['text', 'label']]
 df.index.name = 'index'
 df = df.sample(frac = 0.5, random_state = 2020)
+
+
 filename = '/Users/gabriel/PycharmProjects/GOT/sentiment140compressed.h5'
-df.to_hdf(filename, 'data', mode='w')
+
+
+store = pd.HDFStore("hopeful.h5")
+store['data'] = df
+store.close()
+
+#df.to_hdf(filename, 'data', mode='w')
